@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class MocktailRepository implements MocktailMenu {
     static int idCounter = 0;
-    private Map<int, MocktailRecipe> mocktailRecipes;
+    private final Map<Integer, MocktailRecipe> mocktailRecipes;
 
     public MocktailRepository() {
         this.mocktailRecipes = new HashMap<int, MocktailRecipe>();

@@ -2,28 +2,34 @@ package de.hsos.swa.mocktail.al;
 
 public class MocktailController implements CreateMocktailRecipe, ReadMocktailRecipe, UpdateMocktailRecipe, DeleteMocktailRecipe {
 
+    @Inject
+    private MockTailService mockTailService;
+
     @Override
     public int createMocktailRecipe(String name, String ingredients, String instructions) {
-        return 0;
+
+        return mockTailService.createMocktailRecipe(name, ingredients, instructions);
     }
 
     @Override
     public void deleteMocktailRecipe(String id) {
-
+        mockTailService.deleteMocktailRecipe(id);
     }
 
     @Override
-    public void readMocktailRecipe(String id) {
-
+    public MocktailRecipe readMocktailRecipe(String id) {
+        return mockTailService.getMocktailRecipe(id);
     }
 
     @Override
-    public void readAllMocktailRecipes() {
-
+    public Map<Integer, MocktailRecipe> readAllMocktailRecipes() {
+        return mockTailService.getAllMocktailRecipes();
     }
 
     @Override
     public void updateMocktailRecipe(String id, String name, String ingredients, String instructions) {
-
+        mockTailService.updateMocktailRecipe(Integer.parseInt(id),
+                name, instructions, ingredients);
     }
+
 }

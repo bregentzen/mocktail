@@ -6,8 +6,7 @@ public class MocktailRecipe {
     private String preparation;
     private Ingredient[] ingredients;
 
-    public MocktailRecipe(int id, String name, String preparation, Ingredient[] ingredients) {
-        this.id = id;
+    public MocktailRecipe(String name, String preparation, Ingredient[] ingredients) {
         this.name = name;
         this.preparation = preparation;
         this.ingredients = ingredients;

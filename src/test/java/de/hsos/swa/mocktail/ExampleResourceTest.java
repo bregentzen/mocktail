@@ -9,12 +9,33 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class ExampleResourceTest {
     @Test
-    void testHelloEndpoint() {
+    void testReadAllRecipes() {
+    }
+
+    @Test
+    void testReadRecipe() {
+        String id = "0";
         given()
-          .when().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(is("Hello from Quarkus REST"));
+                .param("id", id)
+                .when().get()//TODO: get(<url>)
+                .then()
+                .statusCode(200)
+                .body("id", is(id)); //TODO: Edit
+    }
+
+    @Test
+    void testCreateRecipe() {
+
+    }
+
+    @Test
+    void testUpdateRecipe() {
+
+    }
+
+    @Test
+    void testDeleteRecipe() {
+
     }
 
 }
