@@ -1,6 +1,7 @@
 package de.hsos.swa.mocktail.dal;
 
 import de.hsos.swa.mocktail.bl.MocktailMenu;
+import de.hsos.swa.mocktail.bl.MocktailRecipe;
 
 public class MocktailRepository implements MocktailMenu {
     @Override
