@@ -1,4 +1,4 @@
-package de.hsos.swa.mocktail;
+package de.hsos.swa.mocktail.boundary;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -6,7 +6,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/hello")
-public class ExampleResource {
+public class MocktailResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
