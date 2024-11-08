@@ -5,10 +5,12 @@ import de.hsos.swa.mocktail.al.CreateMocktailRecipe;
 import de.hsos.swa.mocktail.al.ReadMocktailRecipe;
 import de.hsos.swa.mocktail.al.UpdateMocktailRecipe;
 import de.hsos.swa.mocktail.al.DeleteMocktailRecipe;
+import de.hsos.swa.mocktail.bl.MocktailRecipe;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/mocktails")
 public class MocktailResource {
@@ -26,22 +28,23 @@ public class MocktailResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createMocktailRecipe(MocktailRecipeDTO mocktailRecipeDTO) {
-        int result = createService.createMocktailRecipe(mocktailRecipeDTO.getName(), String.join(",", mocktailRecipeDTO.getIngredients()), mocktailRecipeDTO.getPreparation());
-        return Response.status(Response.Status.CREATED).entity(result).build();
+        int id = createService.createMocktailRecipe(mocktailRecipeDTO.getName(), mocktailRecipeDTO.getIngredients(), mocktailRecipeDTO.getPreparation());
+        return Response.status(Response.Status.CREATED).entity(id).build();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readMocktailRecipe(@PathParam("id") String id) {
-        readService.readMocktailRecipe(id);
-        return Response.ok().build();
+        MocktailRecipe mocktailRecipe = readService.readMocktailRecipe(id);
+        MocktailRecipeDTO mocktailRecipeDTO = MocktailRecipeKonverter.convertToDTO(mocktailRecipe);
+        return Response.ok().entity(mocktailRecipeDTO).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response readAllMocktailRecipes() {
-        readService.readAllMocktailRecipes();
+        List<MocktailRecipeDTO> list = this.readService.readAllMocktailRecipes().values().stream().map(MocktailRecipeKonverter::convertToDTO).toList();
         return Response.ok().build();
     }
 

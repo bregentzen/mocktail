@@ -1,7 +1,12 @@
 package de.hsos.swa.mocktail.bl;
 
+import jakarta.inject.Inject;
+
+
 public class MocktailRecipe {
-    private int id;
+
+    @Inject
+    int id;
     private String name;
     private String preparation;
     private Ingredient[] ingredients;
@@ -29,4 +34,15 @@ public class MocktailRecipe {
     }
 
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setIngredients(Ingredient[] ingredientArray) {
+        this.ingredients = ingredientArray;
+    }
+
+    public void setInstructions(String preparation) {
+        this.preparation = preparation;
+    }
 }

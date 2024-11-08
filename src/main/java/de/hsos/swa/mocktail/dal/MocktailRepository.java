@@ -3,40 +3,45 @@ package de.hsos.swa.mocktail.dal;
 import de.hsos.swa.mocktail.bl.Ingredient;
 import de.hsos.swa.mocktail.bl.MocktailMenu;
 import de.hsos.swa.mocktail.bl.MocktailRecipe;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 
 import java.util.Map;
 import java.util.HashMap;
 
+@ApplicationScoped
 public class MocktailRepository implements MocktailMenu {
     static int idCounter = 0;
     private final Map<Integer, MocktailRecipe> mocktailRecipes;
 
     public MocktailRepository() {
-        this.mocktailRecipes = new HashMap<int, MocktailRecipe>();
+        this.mocktailRecipes = new HashMap<Integer, MocktailRecipe>();
     }
+
     @Override
-    public int createMocktailRecipe(String name, String ingredients, String instructions) {
-        Ingredient[] ingredientArray = new Ingredient[ingredients.split(",").length];
-        for (int i = 0; i < ingredients.split(",").length; i++) {
-            ingredientArray[i] = Ingredient.valueOf(ingredients.split(",")[i]);
-        }
+    public int createMocktailRecipe(MocktailRecipe mocktailRecipe) {
         idCounter++;
-        this.mocktailRecipes.put(idCounter, new MocktailRecipe(idCounter, name, instructions, ingredientArray));
+        this.mocktailRecipes.put(idCounter, mocktailRecipe);
         return idCounter;
     }
 
     @Override
     public MocktailRecipe readMocktailRecipe(int id) {
-        return null;
+        return this.mocktailRecipes.get(id);
     }
 
     @Override
-    public MocktailRecipe[] readAllMocktailRecipes() {
-        return new MocktailRecipe[0];
+    public HashMap<Integer, MocktailRecipe> readAllMocktailRecipes() {
+        return (HashMap<Integer, MocktailRecipe>) this.mocktailRecipes;
     }
 
     @Override
     public void deleteMocktailRecipe(int id) {
+        this.mocktailRecipes.remove(id);
+    }
 
+    @Override
+    public void updateMocktailRecipe(int id,MocktailRecipe mocktailRecipe) {
+        this.mocktailRecipes.put(id, mocktailRecipe);
     }
 }

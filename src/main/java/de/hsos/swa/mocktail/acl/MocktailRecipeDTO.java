@@ -4,7 +4,7 @@ public class MocktailRecipeDTO {
     private String id;
     private String name;
     private String preparation;
-    private String[] ingredients;
+    private String ingredients;
 
     public MocktailRecipeDTO(String id, String name, String preparation, String ingredients) {
         this.id = id;
@@ -25,7 +25,7 @@ public class MocktailRecipeDTO {
         return preparation;
     }
 
-    public String[] getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 

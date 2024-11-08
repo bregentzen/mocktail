@@ -1,5 +1,13 @@
 package de.hsos.swa.mocktail.al;
 
+import de.hsos.swa.mocktail.bl.MocktailRecipe;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Dependent
 public class MocktailController implements CreateMocktailRecipe, ReadMocktailRecipe, UpdateMocktailRecipe, DeleteMocktailRecipe {
 
     @Inject

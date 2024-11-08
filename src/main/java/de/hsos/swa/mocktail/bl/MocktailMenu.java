@@ -1,8 +1,11 @@
 package de.hsos.swa.mocktail.bl;
 
+import java.util.HashMap;
+
 public interface MocktailMenu {
-    public int createMocktailRecipe(String name, String ingredients, String instructions);
+    public int createMocktailRecipe(MocktailRecipe mocktailRecipe);
     public MocktailRecipe readMocktailRecipe(int id);
-    public MocktailRecipe[] readAllMocktailRecipes();
+    public HashMap<Integer, MocktailRecipe> readAllMocktailRecipes();
     public void deleteMocktailRecipe(int id);
+    public void updateMocktailRecipe(int id, MocktailRecipe mocktailRecipe);
 }
