@@ -1,3 +1,6 @@
+# Code With Me Session
+https://code-with-me.global.jetbrains.com/ozL2TiVH0SDJ1SlkvNFC2g#p=IU&fp=09A546E7886CAA1008FC8B90F44B597D10A987ADE8A5031F350F7CD2B8B63FDC&newUi=true
+
 # mocktail
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
