@@ -1,10 +1,8 @@
 package de.hsos.swa.mocktail.dal;
 
-import de.hsos.swa.mocktail.bl.Ingredient;
 import de.hsos.swa.mocktail.bl.MocktailMenu;
 import de.hsos.swa.mocktail.bl.MocktailRecipe;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.Dependent;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -19,10 +17,10 @@ public class MocktailRepository implements MocktailMenu {
     }
 
     @Override
-    public int createMocktailRecipe(MocktailRecipe mocktailRecipe) {
+    public MocktailRecipe createMocktailRecipe(MocktailRecipe mocktailRecipe) {
         idCounter++;
         this.mocktailRecipes.put(idCounter, mocktailRecipe);
-        return idCounter;
+        return mocktailRecipe;
     }
 
     @Override

@@ -1,10 +1,14 @@
 package de.hsos.swa.mocktail.acl;
 
+import de.hsos.swa.mocktail.bl.MocktailRecipe;
+
 public class MocktailRecipeDTO {
     private String id;
     private String name;
     private String preparation;
     private String ingredients;
+
+    public MocktailRecipeDTO(){};
 
     public MocktailRecipeDTO(String id, String name, String preparation, String ingredients) {
         this.id = id;

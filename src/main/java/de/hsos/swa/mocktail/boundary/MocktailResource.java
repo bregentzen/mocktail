@@ -28,8 +28,9 @@ public class MocktailResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createMocktailRecipe(MocktailRecipeDTO mocktailRecipeDTO) {
-        int id = createService.createMocktailRecipe(mocktailRecipeDTO.getName(), mocktailRecipeDTO.getIngredients(), mocktailRecipeDTO.getPreparation());
-        return Response.status(Response.Status.CREATED).entity(id).build();
+        MocktailRecipe mocktailRecipe = createService.createMocktailRecipe(mocktailRecipeDTO.getName(), mocktailRecipeDTO.getIngredients(), mocktailRecipeDTO.getPreparation());
+        MocktailRecipeDTO mocktailRecipeDTO1 = MocktailRecipeKonverter.convertToDTO(mocktailRecipe);
+        return Response.status(Response.Status.CREATED).entity(mocktailRecipeDTO1).build();
     }
 
     @GET
@@ -45,7 +46,7 @@ public class MocktailResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readAllMocktailRecipes() {
         List<MocktailRecipeDTO> list = this.readService.readAllMocktailRecipes().values().stream().map(MocktailRecipeKonverter::convertToDTO).toList();
-        return Response.ok().build();
+        return Response.ok(list).build();
     }
 
     @PUT
@@ -61,7 +62,14 @@ public class MocktailResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteMocktailRecipe(@PathParam("id") String id) {
-        deleteService.deleteMocktailRecipe(id);
-        return Response.noContent().build();
+        try {
+            int mocktailId = Integer.parseInt(id);
+            deleteService.deleteMocktailRecipe(mocktailId);
+            return Response.noContent().build();
+        } catch (NumberFormatException e) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Invalid ID format: " + id)
+                    .build();
+        }
     }
 }

@@ -4,23 +4,22 @@ import de.hsos.swa.mocktail.bl.MocktailRecipe;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Dependent
 public class MocktailController implements CreateMocktailRecipe, ReadMocktailRecipe, UpdateMocktailRecipe, DeleteMocktailRecipe {
 
     @Inject
-    private MockTailService mockTailService;
+    MockTailService mockTailService;
 
     @Override
-    public int createMocktailRecipe(String name, String ingredients, String instructions) {
+    public MocktailRecipe createMocktailRecipe(String name, String ingredients, String instructions) {
 
         return mockTailService.createMocktailRecipe(name, ingredients, instructions);
     }
 
     @Override
-    public void deleteMocktailRecipe(String id) {
+    public void deleteMocktailRecipe(int id) {
         mockTailService.deleteMocktailRecipe(id);
     }
 
