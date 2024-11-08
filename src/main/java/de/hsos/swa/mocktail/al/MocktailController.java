@@ -3,8 +3,8 @@ package de.hsos.swa.mocktail.al;
 public class MocktailController implements CreateMocktailRecipe, ReadMocktailRecipe, UpdateMocktailRecipe, DeleteMocktailRecipe {
 
     @Override
-    public void createMocktailRecipe(String name, String ingredients, String instructions) {
-
+    public int createMocktailRecipe(String name, String ingredients, String instructions) {
+        return 0;
     }
 
     @Override
