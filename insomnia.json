@@ -7,152 +7,61 @@
     {
       "_id": "req_1",
       "parentId": "fld_1",
-      "modified": 0,
-      "created": 0,
       "url": "http://localhost:8080/mocktails",
       "name": "Create Mocktail Recipe",
-      "description": "",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"name\": \"Mojito\",\n  \"ingredients\": \"Mint,Lime,Soda\",\n  \"preparation\": \"Mix all ingredients\"\n}"
+        "text": "{\n \"name\": \"Tropical Delight\",\n  \"preparation\": \"Mix all ingredients and serve over ice.\",\n  \"ingredients\": [\"pineappleJuice\", \"orangeJuice\", \"mint\", \"ice\"]\n}"
       },
-      "parameters": [],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
       "_type": "request"
     },
     {
       "_id": "req_2",
       "parentId": "fld_1",
-      "modified": 0,
-      "created": 0,
-      "url": "http://localhost:8080/mocktails/{id}",
+      "url": "http://localhost:8080/mocktails/{{id}}",
       "name": "Read Mocktail Recipe",
-      "description": "",
       "method": "GET",
-      "parameters": [
-        {
-          "name": "id",
-          "value": "1"
-        }
-      ],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
       "_type": "request"
     },
     {
       "_id": "req_3",
       "parentId": "fld_1",
-      "modified": 0,
-      "created": 0,
       "url": "http://localhost:8080/mocktails",
       "name": "Read All Mocktail Recipes",
-      "description": "",
       "method": "GET",
-      "parameters": [],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
       "_type": "request"
     },
     {
       "_id": "req_4",
       "parentId": "fld_1",
-      "modified": 0,
-      "created": 0,
-      "url": "http://localhost:8080/mocktails/{id}",
+      "url": "http://localhost:8080/mocktails/{{id}}",
       "name": "Update Mocktail Recipe",
-      "description": "",
       "method": "PUT",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"name\": \"Updated Mojito\",\n  \"ingredients\": \"Mint,Lime,Soda\",\n  \"preparation\": \"Mix all ingredients well\"\n}"
+        "text": "{\n  \"name\": \"Updated Tropical Delight\",\n  \"preparation\": \"watered apple juice.\",\n  \"ingredients\": [\"water\", \"appleJuice\"]\n}",
       },
-      "parameters": [
-        {
-          "name": "id",
-          "value": "1"
-        }
-      ],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
       "_type": "request"
     },
     {
       "_id": "req_5",
       "parentId": "fld_1",
-      "modified": 0,
-      "created": 0,
-      "url": "http://localhost:8080/mocktails/{id}",
+      "url": "http://localhost:8080/mocktails/{{id}}",
       "name": "Delete Mocktail Recipe",
-      "description": "",
       "method": "DELETE",
-      "parameters": [
-        {
-          "name": "id",
-          "value": "1"
-        }
-      ],
-      "headers": [],
-      "authentication": {},
-      "metaSortKey": -1,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
       "_type": "request"
     },
     {
       "_id": "fld_1",
       "parentId": "wrk_1",
-      "modified": 0,
-      "created": 0,
       "name": "Mocktail Recipes",
-      "description": "",
       "_type": "request_group"
     },
     {
       "_id": "wrk_1",
       "parentId": null,
-      "modified": 0,
-      "created": 0,
       "name": "Mocktail Project",
-      "description": "",
       "_type": "workspace"
     }
   ]

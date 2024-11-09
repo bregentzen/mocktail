@@ -9,17 +9,15 @@ import java.util.HashMap;
 
 @ApplicationScoped
 public class MocktailRepository implements MocktailMenu {
-    static int idCounter = 0;
     private final Map<Integer, MocktailRecipe> mocktailRecipes;
 
     public MocktailRepository() {
-        this.mocktailRecipes = new HashMap<Integer, MocktailRecipe>();
+        this.mocktailRecipes = new HashMap<>();
     }
 
     @Override
     public MocktailRecipe createMocktailRecipe(MocktailRecipe mocktailRecipe) {
-        idCounter++;
-        this.mocktailRecipes.put(idCounter, mocktailRecipe);
+        this.mocktailRecipes.put(mocktailRecipe.getId(), mocktailRecipe);
         return mocktailRecipe;
     }
 

@@ -1,5 +1,9 @@
 package de.hsos.swa.mocktail.al;
 
+import de.hsos.swa.mocktail.bl.Ingredient;
+
+import java.util.List;
+
 public interface UpdateMocktailRecipe {
-    public void updateMocktailRecipe(String id, String name, String ingredients, String instructions);
+    public void updateMocktailRecipe(int id, String name, List<Ingredient> ingredients, String instructions);
 }

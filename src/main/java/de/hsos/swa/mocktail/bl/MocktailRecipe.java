@@ -6,22 +6,15 @@ public class MocktailRecipe {
     private int id;
     private String name;
     private String preparation;
-    private List<String> ingredients;
+    private List<Ingredient> ingredients;
 
-    public MocktailRecipe(String name, String preparation, List<String> ingredients) {
-        this.name = name;
-        this.preparation = preparation;
-        this.ingredients = ingredients;
-    }
-    // Konstruktoren
-    public MocktailRecipe(int id, String name, String preparation, List<String> ingredients) {
+    public MocktailRecipe(int id, String name, String preparation, List<Ingredient> ingredients) {
         this.id = id;
         this.name = name;
         this.preparation = preparation;
         this.ingredients = ingredients;
     }
 
-    // Getter und Setter
     public int getId() {
         return id;
     }
@@ -46,11 +39,11 @@ public class MocktailRecipe {
         this.preparation = preparation;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 }
