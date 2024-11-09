@@ -13,30 +13,15 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
 
-@RequestScoped
 @Path("/mocktails")
 public class MocktailResource {
 
-    @Inject
-    CreateMocktailRecipe createService;
     @Inject
     ReadMocktailRecipe readService;
     @Inject
     UpdateMocktailRecipe updateService;
     @Inject
     DeleteMocktailRecipe deleteService;
-    @Inject
-    int id;
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response createMocktailRecipe(MocktailRecipeDTO mocktailRecipeDTO) {
-        //System.out.println("Creating mocktail recipe" + id);
-        MocktailRecipe mocktailRecipe = createService.createMocktailRecipe(id, mocktailRecipeDTO.getName(), mocktailRecipeDTO.getIngredients(), mocktailRecipeDTO.getPreparation());
-        MocktailRecipeDTO mocktailRecipeDTO1 = MocktailRecipeKonverter.convertToDTO(mocktailRecipe);
-        return Response.status(Response.Status.CREATED).entity(mocktailRecipeDTO1).build();
-    }
 
     @GET
     @Path("/{id}")
