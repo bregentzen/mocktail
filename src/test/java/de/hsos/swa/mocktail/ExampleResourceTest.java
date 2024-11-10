@@ -25,16 +25,16 @@ class ExampleResourceTest {
                 }
                 """;
 
-        // Test for successful creation of a Mocktail recipe
+
         given()
                 .contentType("application/json")
                 .body(requestBody)
                 .when().post("/mocktails")
                 .then()
-                .statusCode(201) // Expecting 201 Created
+                .statusCode(201)
                 .body("name", is("Tropical Delight"))
                 .body("preparation", is("Mix all ingredients and serve over ice."))
-                .body("id", notNullValue()); // Check that an ID was generated
+                .body("id", notNullValue());
     }
 
     @Test
@@ -52,6 +52,18 @@ class ExampleResourceTest {
                 .body("name", notNullValue())
                 .body("preparation", notNullValue())
                 .body("ingredients", notNullValue());
+    }
+
+
+    @Test
+    public void testBadReadMocktailRecipe() {
+        int mocktailId = 2;
+
+        given()
+                .pathParam("id", mocktailId)
+                .when().get("/mocktails/{id}")
+                .then().assertThat()
+                .statusCode(404);
     }
 
     @Test
@@ -75,7 +87,7 @@ class ExampleResourceTest {
                 }
                 """;
 
-        // Test for updating a specific Mocktail recipe
+
         given()
                 .contentType("application/json")
                 .pathParam("id", mocktailId)
@@ -104,6 +116,6 @@ class ExampleResourceTest {
                 .pathParam("id", mocktailId)
                 .when().get("/mocktails/{id}")
                 .then()
-                .statusCode(404); // Expecting 404 Not Found after deletion
+                .statusCode(404);
     }
 }
