@@ -28,9 +28,18 @@ public class MocktailResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readMocktailRecipe(@PathParam("id") int id) {
         MocktailRecipe mocktailRecipe = readService.readMocktailRecipe(id);
+
+        // Überprüfen, ob das MocktailRecipe null ist
+        if (mocktailRecipe == null) {
+            // Geben Sie einen 404-Status zurück, wenn das Rezept nicht existiert
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        // Konvertieren Sie das gefundene Rezept in das DTO und geben es zurück
         MocktailRecipeDTO mocktailRecipeDTO = MocktailRecipeKonverter.convertToDTO(mocktailRecipe);
         return Response.ok().entity(mocktailRecipeDTO).build();
     }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,7 +55,9 @@ public class MocktailResource {
     public Response updateMocktailRecipe(@PathParam("id") int id, MocktailRecipeDTO mocktailRecipeDTO) {
 
         updateService.updateMocktailRecipe(id, mocktailRecipeDTO.getName(), mocktailRecipeDTO.getIngredients(), mocktailRecipeDTO.getPreparation());
-        return Response.ok().build();
+
+
+        return Response.ok().entity(MocktailRecipeKonverter.convertToDTO(readService.readMocktailRecipe(id))).build();
     }
 
     @DELETE
