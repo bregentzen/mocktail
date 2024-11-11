@@ -5,6 +5,6 @@ import de.hsos.swa.mocktail.bl.MocktailRecipe;
 import java.util.Map;
 
 public interface ReadMocktailRecipe {
-    public MocktailRecipe readMocktailRecipe(String id);
+    public MocktailRecipe readMocktailRecipe(int id);
     public Map<Integer, MocktailRecipe> readAllMocktailRecipes();
 }

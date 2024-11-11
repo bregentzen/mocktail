@@ -1,0 +1,68 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2023-10-01T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.1.1",
+  "resources": [
+    {
+      "_id": "req_1",
+      "parentId": "fld_1",
+      "url": "http://localhost:8080/mocktails",
+      "name": "Create Mocktail Recipe",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n \"name\": \"Tropical Delight\",\n  \"preparation\": \"Mix all ingredients and serve over ice.\",\n  \"ingredients\": [\"pineappleJuice\", \"orangeJuice\", \"mint\", \"ice\"]\n}"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_2",
+      "parentId": "fld_1",
+      "url": "http://localhost:8080/mocktails/{{id}}",
+      "name": "Read Mocktail Recipe",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_3",
+      "parentId": "fld_1",
+      "url": "http://localhost:8080/mocktails",
+      "name": "Read All Mocktail Recipes",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_4",
+      "parentId": "fld_1",
+      "url": "http://localhost:8080/mocktails/{{id}}",
+      "name": "Update Mocktail Recipe",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Updated Tropical Delight\",\n  \"preparation\": \"watered apple juice.\",\n  \"ingredients\": [\"water\", \"appleJuice\"]\n}",
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_5",
+      "parentId": "fld_1",
+      "url": "http://localhost:8080/mocktails/{{id}}",
+      "name": "Delete Mocktail Recipe",
+      "method": "DELETE",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_1",
+      "parentId": "wrk_1",
+      "name": "Mocktail Recipes",
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_1",
+      "parentId": null,
+      "name": "Mocktail Project",
+      "_type": "workspace"
+    }
+  ]
+}

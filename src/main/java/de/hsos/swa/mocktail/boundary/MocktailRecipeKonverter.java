@@ -5,14 +5,10 @@ import de.hsos.swa.mocktail.bl.MocktailRecipe;
 
 public class MocktailRecipeKonverter {
     public static MocktailRecipeDTO convertToDTO(MocktailRecipe mocktailRecipe) {
-        StringBuilder ingredientBuilder = new StringBuilder();
-        for (int i = 0; i < mocktailRecipe.getIngredients().length; i++) {
-            ingredientBuilder.append(mocktailRecipe.getIngredients()[i]).append(",");
-        }
-        String ingredient = ingredientBuilder.toString();
-        if (!ingredient.isEmpty()) {
-            ingredient = ingredient.substring(0, ingredient.length() - 1);
-        }
-        return new MocktailRecipeDTO(String.valueOf(mocktailRecipe.getId()), mocktailRecipe.getName(), mocktailRecipe.getPreparation(), ingredient);
+        return new MocktailRecipeDTO(mocktailRecipe.getId(), mocktailRecipe.getName(), mocktailRecipe.getPreparation(), mocktailRecipe.getIngredients());
+    }
+
+    public static MocktailRecipe convertToEntity(MocktailRecipeDTO mocktailRecipeDTO) {
+        return new MocktailRecipe(0, mocktailRecipeDTO.getName(), mocktailRecipeDTO.getPreparation(), mocktailRecipeDTO.getIngredients());
     }
 }

@@ -1,28 +1,24 @@
 package de.hsos.swa.mocktail.dal;
 
-import de.hsos.swa.mocktail.bl.Ingredient;
 import de.hsos.swa.mocktail.bl.MocktailMenu;
 import de.hsos.swa.mocktail.bl.MocktailRecipe;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.Dependent;
 
 import java.util.Map;
 import java.util.HashMap;
 
 @ApplicationScoped
 public class MocktailRepository implements MocktailMenu {
-    static int idCounter = 0;
     private final Map<Integer, MocktailRecipe> mocktailRecipes;
 
     public MocktailRepository() {
-        this.mocktailRecipes = new HashMap<Integer, MocktailRecipe>();
+        this.mocktailRecipes = new HashMap<>();
     }
 
     @Override
-    public int createMocktailRecipe(MocktailRecipe mocktailRecipe) {
-        idCounter++;
-        this.mocktailRecipes.put(idCounter, mocktailRecipe);
-        return idCounter;
+    public MocktailRecipe createMocktailRecipe(MocktailRecipe mocktailRecipe) {
+        this.mocktailRecipes.put(mocktailRecipe.getId(), mocktailRecipe);
+        return mocktailRecipe;
     }
 
     @Override

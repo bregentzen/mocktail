@@ -1,17 +1,15 @@
 package de.hsos.swa.mocktail.bl;
 
-import jakarta.inject.Inject;
-
+import java.util.List;
 
 public class MocktailRecipe {
-
-    @Inject
-    int id;
+    private int id;
     private String name;
     private String preparation;
-    private Ingredient[] ingredients;
+    private List<Ingredient> ingredients;
 
-    public MocktailRecipe(String name, String preparation, Ingredient[] ingredients) {
+    public MocktailRecipe(int id, String name, String preparation, List<Ingredient> ingredients) {
+        this.id = id;
         this.name = name;
         this.preparation = preparation;
         this.ingredients = ingredients;
@@ -21,28 +19,31 @@ public class MocktailRecipe {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPreparation() {
         return preparation;
     }
 
-    public Ingredient[] getIngredients() {
+    public void setPreparation(String preparation) {
+        this.preparation = preparation;
+    }
+
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setIngredients(Ingredient[] ingredientArray) {
-        this.ingredients = ingredientArray;
-    }
-
-    public void setInstructions(String preparation) {
-        this.preparation = preparation;
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }

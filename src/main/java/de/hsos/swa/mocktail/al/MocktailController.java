@@ -1,31 +1,33 @@
 package de.hsos.swa.mocktail.al;
 
+import de.hsos.swa.mocktail.bl.Ingredient;
 import de.hsos.swa.mocktail.bl.MocktailRecipe;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
-import java.util.HashMap;
+import java.awt.*;
+import java.util.List;
 import java.util.Map;
 
 @Dependent
 public class MocktailController implements CreateMocktailRecipe, ReadMocktailRecipe, UpdateMocktailRecipe, DeleteMocktailRecipe {
 
     @Inject
-    private MockTailService mockTailService;
+    MockTailService mockTailService;
 
     @Override
-    public int createMocktailRecipe(String name, String ingredients, String instructions) {
+    public MocktailRecipe createMocktailRecipe(int id, String name, List<Ingredient> ingredients, String instructions) {
 
-        return mockTailService.createMocktailRecipe(name, ingredients, instructions);
+        return mockTailService.createMocktailRecipe(id, name, ingredients, instructions);
     }
 
     @Override
-    public void deleteMocktailRecipe(String id) {
+    public void deleteMocktailRecipe(int id) {
         mockTailService.deleteMocktailRecipe(id);
     }
 
     @Override
-    public MocktailRecipe readMocktailRecipe(String id) {
+    public MocktailRecipe readMocktailRecipe(int id) {
         return mockTailService.getMocktailRecipe(id);
     }
 
@@ -35,9 +37,8 @@ public class MocktailController implements CreateMocktailRecipe, ReadMocktailRec
     }
 
     @Override
-    public void updateMocktailRecipe(String id, String name, String ingredients, String instructions) {
-        mockTailService.updateMocktailRecipe(Integer.parseInt(id),
-                name, instructions, ingredients);
+    public void updateMocktailRecipe(int id, String name, List<Ingredient> ingredients, String instructions) {
+        mockTailService.updateMocktailRecipe(id,
+                name, ingredients, instructions);
     }
-
 }

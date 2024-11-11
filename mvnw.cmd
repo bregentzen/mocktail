@@ -1,3 +1,4 @@
+```bat
 @REM ----------------------------------------------------------------------------
 @REM Licensed to the Apache Software Foundation (ASF) under one
 @REM or more contributor license agreements.  See the NOTICE file
@@ -167,7 +168,6 @@ IF NOT %WRAPPER_SHA_256_SUM%=="" (
        "  Write-Error 'Investigate or delete %WRAPPER_JAR% to attempt a clean download.';"^
        "  Write-Error 'If you updated your Maven version, you need to update the specified wrapperSha256Sum property.';"^
        "  exit 1;"^
-       "}"^
        "}"
     if ERRORLEVEL 1 goto error
 )
@@ -204,3 +204,4 @@ if "%MAVEN_BATCH_PAUSE%"=="on" pause
 if "%MAVEN_TERMINATE_CMD%"=="on" exit %ERROR_CODE%
 
 cmd /C exit /B %ERROR_CODE%
+```

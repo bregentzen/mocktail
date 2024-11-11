@@ -3,45 +3,36 @@ package de.hsos.swa.mocktail.al;
 import de.hsos.swa.mocktail.bl.Ingredient;
 import de.hsos.swa.mocktail.bl.MocktailMenu;
 import de.hsos.swa.mocktail.bl.MocktailRecipe;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
 import java.util.Map;
+import java.util.List;
 
+@Dependent
 public class MockTailService {
 
     @Inject
     MocktailMenu mocktailMenu;
 
-    public MocktailRecipe getMocktailRecipe(String id) {
-        //TODO: convert id to Integer
-        Integer mocktailId;
-        try {
-            mocktailId = Integer.parseInt(id);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid Mocktail ID: " + id);
-            return new MocktailRecipe( null, null, null); //TODO: change
-        }
-
-        return mocktailMenu.readMocktailRecipe(mocktailId);
+    public MocktailRecipe getMocktailRecipe(int id) {
+        return mocktailMenu.readMocktailRecipe(id);
     }
 
     public Map<Integer, MocktailRecipe> getAllMocktailRecipes() {
-
         return  mocktailMenu.readAllMocktailRecipes();
     }
 
-    public Integer createMocktailRecipe(String name, String ingredients, String instructions) {
-
-        Ingredient[] ingredients1 = null; // TODO: Convert ingredients to Ingredient[]
-        return mocktailMenu.createMocktailRecipe(new MocktailRecipe( name, instructions, ingredients1));
+    public MocktailRecipe createMocktailRecipe(int id, String name, List<Ingredient> ingredients, String instructions) {
+        return mocktailMenu.createMocktailRecipe(new MocktailRecipe(id, name, instructions, ingredients));
     }
-    public void deleteMocktailRecipe(String id) {
+    public void deleteMocktailRecipe(int id) {
         //TODO: convert id to Integer
-        mocktailMenu.deleteMocktailRecipe(Integer.parseInt(id));
+        mocktailMenu.deleteMocktailRecipe(id);
     }
 
-    public void updateMocktailRecipe(Integer id, String name, String ingredients, String instructions) {
-        Ingredient[] ingredients1 = new Ingredient[ingredients.length()]; //TODO: convert ingredients-String to Ingredients[]
-        mocktailMenu.updateMocktailRecipe(id, new MocktailRecipe( name, instructions, ingredients1));
+    public void updateMocktailRecipe(int id, String name, List<Ingredient> ingredients, String instructions) {
+        //TODO: convert ingredients-String to Ingredients[]
+        mocktailMenu.updateMocktailRecipe(id, new MocktailRecipe(id, name, instructions, ingredients));
     }
 }

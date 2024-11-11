@@ -1,46 +1,52 @@
 package de.hsos.swa.mocktail.acl;
 
+import de.hsos.swa.mocktail.bl.Ingredient;
+import java.util.List;
+
 public class MocktailRecipeDTO {
-    private String id;
+    private int id;
     private String name;
     private String preparation;
-    private String ingredients;
+    private List<Ingredient> ingredients;
 
-    public MocktailRecipeDTO(String id, String name, String preparation, String ingredients) {
+    public MocktailRecipeDTO() {}
+
+    public MocktailRecipeDTO(int id, String name, String preparation, List<Ingredient> ingredients) {
         this.id = id;
         this.name = name;
         this.preparation = preparation;
         this.ingredients = ingredients;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPreparation() {
         return preparation;
     }
 
-    public String getIngredients() {
+    public void setPreparation(String preparation) {
+        this.preparation = preparation;
+    }
+
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
