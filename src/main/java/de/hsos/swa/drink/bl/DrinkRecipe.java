@@ -1,21 +1,19 @@
-package de.hsos.swa.mocktail.acl;
+package de.hsos.swa.drink.bl;
 
-import de.hsos.swa.mocktail.bl.Ingredient;
 import java.util.List;
 
-public class MocktailRecipeDTO {
-    private int id;
+public class DrinkRecipe {
+
     private String name;
     private String preparation;
     private List<Ingredient> ingredients;
+    int id;
 
-    public MocktailRecipeDTO() {}
-
-    public MocktailRecipeDTO(int id, String name, String preparation, List<Ingredient> ingredients) {
-        this.id = id;
+    public DrinkRecipe(String name, String preparation, List<Ingredient> ingredients, int id) {
         this.name = name;
         this.preparation = preparation;
         this.ingredients = ingredients;
+        this.id = id;
     }
 
     public int getId() {
