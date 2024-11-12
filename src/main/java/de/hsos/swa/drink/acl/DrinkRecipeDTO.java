@@ -1,26 +1,19 @@
-package de.hsos.swa.mocktail.bl;
+package de.hsos.swa.drink.acl;
 
 import java.util.List;
 
-public class MocktailRecipe {
-    private int id;
+public class DrinkRecipeDTO {
+
     private String name;
     private String preparation;
-    private List<Ingredient> ingredients;
+    private List<String> ingredients;
 
-    public MocktailRecipe(int id, String name, String preparation, List<Ingredient> ingredients) {
-        this.id = id;
+    public DrinkRecipeDTO() {}
+
+    public DrinkRecipeDTO(String name, String preparation, List<String> ingredients) {
         this.name = name;
         this.preparation = preparation;
         this.ingredients = ingredients;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -39,11 +32,11 @@ public class MocktailRecipe {
         this.preparation = preparation;
     }
 
-    public List<Ingredient> getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
 }

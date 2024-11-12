@@ -53,8 +53,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.eclipse</groupId>
-            <artifactId>yasson</artifactId>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
     </dependencies>
 

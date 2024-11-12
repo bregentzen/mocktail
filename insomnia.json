@@ -7,8 +7,8 @@
     {
       "_id": "req_1",
       "parentId": "fld_1",
-      "url": "http://localhost:8080/mocktails",
-      "name": "Create Mocktail Recipe",
+      "url": "http://localhost:8080/drinks",
+      "name": "Create Drink Recipe",
       "method": "POST",
       "body": {
         "mimeType": "application/json",
@@ -19,49 +19,63 @@
     {
       "_id": "req_2",
       "parentId": "fld_1",
-      "url": "http://localhost:8080/mocktails/{{id}}",
-      "name": "Read Mocktail Recipe",
+      "url": "http://localhost:8080/drinks/{{id}}",
+      "name": "Read Drink Recipe",
       "method": "GET",
       "_type": "request"
     },
     {
       "_id": "req_3",
       "parentId": "fld_1",
-      "url": "http://localhost:8080/mocktails",
-      "name": "Read All Mocktail Recipes",
+      "url": "http://localhost:8080/drinks",
+      "name": "Read All Drink Recipes",
       "method": "GET",
       "_type": "request"
     },
     {
       "_id": "req_4",
       "parentId": "fld_1",
-      "url": "http://localhost:8080/mocktails/{{id}}",
-      "name": "Update Mocktail Recipe",
+      "url": "http://localhost:8080/drinks/{{id}}",
+      "name": "Update Drink Recipe",
       "method": "PUT",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"name\": \"Updated Tropical Delight\",\n  \"preparation\": \"watered apple juice.\",\n  \"ingredients\": [\"water\", \"appleJuice\"]\n}",
+        "text": "{\n  \"name\": \"Updated Tropical Delight\",\n  \"preparation\": \"watered apple juice.\",\n  \"ingredients\": [\"water\", \"appleJuice\"]\n}"
       },
       "_type": "request"
     },
     {
       "_id": "req_5",
       "parentId": "fld_1",
-      "url": "http://localhost:8080/mocktails/{{id}}",
-      "name": "Delete Mocktail Recipe",
+      "url": "http://localhost:8080/drinks/{{id}}",
+      "name": "Delete Drink Recipe",
       "method": "DELETE",
+      "_type": "request"
+    },
+    {
+      "_id": "req_6",
+      "method": "GET",
+      "url": "http://localhost:8080/drinks/cocktails",
+      "name": "Read All Cocktails",
+      "_type": "request"
+    },
+    {
+      "_id": "req_7",
+      "method": "GET",
+      "url": "http://localhost:8080/drinks/mocktails",
+      "name": "Read All Mocktails",
       "_type": "request"
     },
     {
       "_id": "fld_1",
       "parentId": "wrk_1",
-      "name": "Mocktail Recipes",
+      "name": "Drink Recipes",
       "_type": "request_group"
     },
     {
       "_id": "wrk_1",
       "parentId": null,
-      "name": "Mocktail Project",
+      "name": "Drink Project",
       "_type": "workspace"
     }
   ]

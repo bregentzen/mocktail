@@ -1,12 +1,7 @@
-package de.hsos.swa.mocktail;
+package de.hsos.swa.drink;
 
-import de.hsos.swa.mocktail.acl.MocktailRecipeDTO;
-import de.hsos.swa.mocktail.bl.Ingredient;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;

@@ -1,4 +1,4 @@
-package de.hsos.swa.mocktail;
+package de.hsos.swa.drink;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
