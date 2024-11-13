@@ -7,7 +7,6 @@ import org.jboss.logging.Logger;
 import java.util.HashMap;
 
 public class ingredientInitializer {
-    private static final Logger logging = Logger.getLogger(ingredientInitializer.class);
 
     @Produces
     public static HashMap<String, Ingredient> initializeIngredients() {
@@ -72,8 +71,6 @@ public class ingredientInitializer {
         ingredients.put("Bitters", new Ingredient("Bitters", false));
         ingredients.put("Soda", new Ingredient("Soda", false));
 
-        logging.info("Ingredients initialized");
-        logging.trace("Ingredients: " + ingredients);
         return ingredients;
     }
 }
