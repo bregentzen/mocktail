@@ -11,8 +11,10 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+Anfang
 import java.util.List;
 
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -60,6 +62,7 @@ public class DrinkRessource {
             }
     )
     @Produces(MediaType.APPLICATION_JSON)
+    @Fallback(fallbackMethod = "readAllDrinkRecipes")
     public Response readDrinkRecipe(@PathParam("id") int id) {
         DrinkRecipeDTO drinkRecipe = readService.readDrinkRecipe(id);
 
@@ -80,8 +83,9 @@ public class DrinkRessource {
             }
     )
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readAllMDrinkRecipes() {
+    public Response readAllDrinkRecipes() {
         List<DrinkRecipeDTO> list = this.readService.readAllDrinkRecipes();
+
         return Response.ok(list).build();
     }
 
