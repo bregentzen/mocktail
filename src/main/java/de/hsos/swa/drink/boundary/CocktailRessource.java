@@ -4,7 +4,7 @@ import de.hsos.swa.drink.acl.CocktailsListDTO;
 import de.hsos.swa.drink.acl.DrinkRecipeDTO;
 import de.hsos.swa.drink.acl.DrinkRecipeCocktailDTO;
 import de.hsos.swa.drink.al.ReadDrinkRecipe;
-import de.hsos.swa.drink.bl.cocktails.gateway.JEECocktailsRestClient;
+
 import de.hsos.swa.drink.bl.cocktails.gateway.MPCocktailsRestClient;
 import de.hsos.swa.shared.Log;
 import jakarta.inject.Inject;
