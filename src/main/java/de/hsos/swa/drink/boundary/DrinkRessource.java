@@ -11,15 +11,17 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-Anfang
+
 import java.util.List;
 
 import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
+
 
 
 @Path("/drinks")
@@ -45,6 +47,7 @@ public class DrinkRessource {
     )
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Retry(maxRetries = 4)
     public Response createDrinkRecipe(DrinkRecipeDTO drinkRecipeDTO) {
         drinkRecipeDTO = createService.createDrinkRecipe(drinkRecipeDTO);
         return Response.status(Response.Status.CREATED).entity(drinkRecipeDTO).build();
@@ -62,7 +65,8 @@ public class DrinkRessource {
             }
     )
     @Produces(MediaType.APPLICATION_JSON)
-    @Fallback(fallbackMethod = "readAllDrinkRecipes")
+   // @Fallback(fallbackMethod = "readAllDrinkRecipes")
+    @Retry(maxRetries = 4)
     public Response readDrinkRecipe(@PathParam("id") int id) {
         DrinkRecipeDTO drinkRecipe = readService.readDrinkRecipe(id);
 
@@ -83,6 +87,7 @@ public class DrinkRessource {
             }
     )
     @Produces(MediaType.APPLICATION_JSON)
+    @Retry(maxRetries = 4)
     public Response readAllDrinkRecipes() {
         List<DrinkRecipeDTO> list = this.readService.readAllDrinkRecipes();
 
@@ -100,6 +105,7 @@ public class DrinkRessource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @Retry(maxRetries = 4)
     public Response updateDrinkRecipe(@PathParam("id") int id, DrinkRecipeDTO drinkRecipeDTO) {
         updateService.updateDrinkRecipe(id, drinkRecipeDTO.getName(), drinkRecipeDTO.getIngredients(), drinkRecipeDTO.getPreparation());
         return Response.ok().entity(readService.readDrinkRecipe(id)).build();
@@ -117,6 +123,7 @@ public class DrinkRessource {
     )
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @Retry(maxRetries = 4)
     public Response deleteDrinkRecipe(@PathParam("id") int id) {
         if (!deleteService.deleteDrinkRecipe(id)) {
             return Response.status(Response.Status.NOT_FOUND).build();

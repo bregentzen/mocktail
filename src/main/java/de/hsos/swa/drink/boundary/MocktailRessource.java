@@ -9,6 +9,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -34,6 +35,7 @@ public class MocktailRessource {
             }
     )
     @Produces(MediaType.APPLICATION_JSON)
+    @Retry(maxRetries = 4)
     public Response readAllMocktails() {
         List<DrinkRecipeDTO> list = this.readService.readAllMocktailRecipes();
          return Response.ok(list).build();

@@ -3,6 +3,7 @@ package de.hsos.swa.drink.bl;
 import de.hsos.swa.drink.cdi.IdProducer;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.jboss.logging.Logger;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class DrinkService {
     @Inject
     IdProducer idProducer;
 
+    @CircuitBreaker(requestVolumeThreshold = 4)
     public DrinkRecipe getDrinkRecipe(int id) {
         return drinkMenu.getDrinkRecipe(id);
     }
@@ -54,6 +56,7 @@ public class DrinkService {
         return drinkMenu.deleteDrinkRecipe(id);
     }
 
+    @CircuitBreaker(requestVolumeThreshold = 1)
     public void editDrinkRecipe(int id, String name, List<String> ingredients, String preparation) {
         List<Ingredient> ingredientsList = ingredients.stream().map(ingredientName -> ingredientCatalog.getIngredient(ingredientName)).toList();
         drinkMenu.updateDrinkRecipe(id, name, ingredientsList, preparation);
