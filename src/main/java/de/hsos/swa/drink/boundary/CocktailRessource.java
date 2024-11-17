@@ -14,6 +14,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -50,10 +51,8 @@ public class CocktailRessource {
     @Produces(MediaType.APPLICATION_JSON)
     @Retry(maxRetries = 4)
     @Timeout(10000)
-//    @Fallback(fallbackMethod = "getMocktailsAsFallback")
+    @Fallback(fallbackMethod = "getMocktailsAsFallback")
     public Response readAllCocktails() {
-
-        //List<DrinkRecipeDTO> list = this.readService.readAllCocktailRecipes();
         CocktailsListDTO list = this.cocktailsRestClient.getAllCocktails("Cocktail");
         return Response.ok(list).build();
     }
